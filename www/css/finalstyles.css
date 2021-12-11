@@ -1,0 +1,45 @@
+p,h1, h2, h3, h4, ul, li, a{
+    font-family: sans-serif;
+}
+
+.casing{
+    display: flex;
+}
+
+.content{
+    padding: 15px;
+    background-color: white;
+}
+
+.border{
+    width: 200px;
+    background-color: springgreen;
+}
+.title{
+    font-family: Impact, fantasy;
+}
+
+.footer{
+    background-color: mediumpurple;
+    color: white;
+    padding: 6px;
+    text-align: center;
+}
+
+.header{
+    padding: 6px;
+    background-color: mediumpurple;
+    color: white;
+    font-family: Impact, fantasy;
+}
+
+.bar{
+    color: blue;
+    stroke-width: 1px;
+    stroke: white;
+}
+
+text{
+    font-family: Arial;
+    font-size: 8px;
+}
