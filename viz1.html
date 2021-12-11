@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number of Different Genre PS4 Games</title>
+    <link type="text/css" rel="stylesheet" href="www/css/finalstyles.css">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+</head>
+<body>
+<div>
+    <h1 class="header">Noelle Gray's Final D3 Project for Visualizing Information</h1>
+</div>
+<div class="casing">
+    <div class="border"></div>
+    <div class="content">
+        <a href="d3final.html">Back to Visualizations</a>
+        <h4>Numbers of Different Genre PS4 Games (Filtered by Which Genres Have at Least 70 Games)</h4>
+        <p>This visualization was my starting point. As aforementioned, this data is filtered by which genres had over 70 games; this way, I could ignore some genres that had some overlap or were extremely niche. I just had the simple question of which genre was the most popular for developers to create for the PS4. Looking at the graph, it’s apparent that platforming games are extremely popular for the lifespan of the console. I had expected that Action and Adventure—or even FPS games would have been created most, but I was surprised by the results. We might assume that more funding toward advertising and marketing goes to big games like Call of Duty or Last of Us. There could be more indie games, that might not have as much fame, that rely on the platformer genre as well.</p>
+
+        <svg height="600px" width="1000px"
+             style="border: black solid 1px">
+            <g transform="translate(130,40)" style="fill: rebeccapurple; stroke-width: 2px; stroke: white" >
+            </g>
+            <line id="xaxis" x1="100" x2="950" y1="545" y2="545"
+                  style="stroke: black" stroke-width="3px"></line>
+            <line id="yaxis" x1="100" x2="100" y1="25" y2="545" stroke="black" stroke-width="3px"></line>
+
+            line id="tick1" x1="100" x2="75" y1="545" y2="545" stroke="black" stroke-width="3px"></line>
+            <line id="tick2" x1="100" x2="75" y1="535" y2="535"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="520">0</text>
+
+            <line id="tick3" x1="100" x2="75" y1="490" y2="490"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="480">75</text>
+
+            <line id="tick4" x1="100" x2="75" y1="445" y2="445"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="435">150</text>
+
+            <line id="tick5" x1="100" x2="75" y1="400" y2="400"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="390">225</text>
+
+            <line id="tick6" x1="100" x2="75" y1="355" y2="355"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="345">300</text>
+
+            <line id="tick7" x1="100" x2="75" y1="310" y2="310"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="300">375</text>
+
+            <line id="tick8" x1="100" x2="75" y1="265" y2="265"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="255">450</text>
+
+            <line id="tick9" x1="100" x2="75" y1="220" y2="220"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="210">525</text>
+
+            <line id="tick10" x1="100" x2="75" y1="175" y2="175"stroke="black" stroke-width="3px"></line>
+            <text x="65" y="165">600</text>
+
+            <line id="tick11" x1="100" x2="75" y1="130" y2="130" stroke="black" stroke-width="3px"></line>
+            <text x="65" y="120">675</text>
+
+            <line id="tick12" x1="100" x2="75" y1="85" y2="85" stroke-width="3px" stroke="black"></line>
+            <text x="75" y="75">750</text>
+
+
+<!--genres-->
+
+
+            <line x1="145" x2="145" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="135" y="570">Action</text>
+            <line x1="175" x2="175" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="165" y="570">AA</text>
+
+            <line x1="205" x2="205" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="190" y="570">ARPG</text>
+            <line x1="235" x2="235" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="220" y="570">Advent.</text>
+            <line x1="265" x2="265" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="250" y="570">A.P&C</text>
+
+            <line x1="295" x2="295" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="280" y="570">Arc.Race</text>
+
+            <line x1="325" x2="325" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="320" y="570">BEU</text>
+
+            <line x1="355" x2="355" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="340" y="570">Fighting</text>
+
+            <line x1="385" x2="385" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="380" y="570">FPS</text>
+
+            <line x1="415" x2="415" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="405" y="570">H&S</text>
+
+            <line x1="445" x2="445" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="430" y="570">M. Plat.</text>
+
+            <line x1="475" x2="475" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="465" y="570">Music</text>
+
+            <line x1="505" x2="505" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="495" y="570">Party</text>
+
+            <line x1="535" x2="535" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="525" y="570">Plat.</text>
+
+            <line x1="565" x2="565" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="555" y="570">Puzzle</text>
+
+            <line x1="595" x2="595" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="585" y="570">P. Plat</text>
+
+            <line x1="625" x2="625" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="610" y="570">TBStrat.</text>
+
+            <line x1="655" x2="655" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="645" y="570">RPTB</text>
+
+            <line x1="685" x2="685" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="675" y="570">R&G</text>
+
+            <line x1="715" x2="715" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="705" y="570">SEU</text>
+
+            <line x1="745" x2="745" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="735" y="570">Sim</text>
+
+            <line x1="775" x2="775" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="753" y="570">Sim.Man.</text>
+
+            <line x1="805" x2="805" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="790" y="570">Strat.TB</text>
+
+            <line x1="835" x2="835" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="823" y="570">S.Horror</text>
+
+            <line x1="865" x2="865" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="855" y="570">V. Novel</text>
+
+
+
+
+
+
+
+
+
+
+        </svg>
+        <!--Script-->
+        <script>
+            d3.csv('includes/data/playstation_4_games.csv')
+
+            var barwidth = 30;
+            var maxbarheight = 500;
+
+            var genres = [560, 353, 220, 471, 243, 130, 155, 176, 194, 121, 89, 115, 83, 736, 582, 158, 93, 221, 80, 528, 194,96, 130, 78, 394];
+
+            function createBarChart() {
+                var maxValue = d3.max(genres);
+
+                var selection = d3.select('svg').select('g').selectAll('rect').data(genres);
+
+                var rectangles = selection.enter().append('rect');
+
+                rectangles.attr('width', barwidth)
+
+                rectangles.attr('x', function (d, i) {
+                    return i * barwidth;
+                })
+
+                rectangles.attr('height', function (d) {
+                    var n = d / maxValue;
+                    return n * maxbarheight;
+                });
+
+                rectangles.attr('y', function (d) {
+                    var n = 1 - (d / maxValue);
+                    return n * maxbarheight;
+                });
+            }
+
+            createBarChart()
+        </script>
+    </div>
+    <div class="border"></div>
+</div>
+
+<div class="footer"><p>This was completed for Fall 2021 Visualizing Information @ IUPUI</p></div>
+</body>
+</html>

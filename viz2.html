@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Physical vs. Digital Releases of PS4 Games</title>
+    <link type="text/css" rel="stylesheet" href="www/css/finalstyles.css">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+</head>
+<body>
+<div>
+    <h1 class="header">Noelle Gray's Final D3 Project for Visualizing Information</h1>
+</div>
+<!--Part Two-->
+
+<div class="casing">
+    <div class="border"></div>
+<div class="content">
+    <a href="d3final.html">Back to Visualizations</a>
+    <h4>Physical Copies vs. Digital Distribution of PS4 Games</h4>
+
+    <p>As the console and gaming industries progress, the necessity of owning of physical copy of a game has decreased—and now, it can even be considered undesirable. Physical copies can get scratched, damaged, or lost. If consoles and tech update, you will still be able to download a digital game on another device. There are many different methods to owning games digitally now, such as Steam and Epic Games, which will install them on your computer; however, is the trend reflective pertaining to home consoles, which were born off the premise of being able to play video games at home.</p>
+        <p> The question that prompted this visualization was if the PS4 reflected these trends toward a more digital industry. Here, I think this bar graph answers that question and emphasizes a more digital future for at-home gaming—at least for this console. Almost 6000 of the games that were in this data set were released digitally only. If you compare this number to the only 36 physical only releases—or even the 3000 digital and physical releases—it’s apparent to see this shift.
+    </p>
+
+    <svg height="600px" width="600px"
+         style="border: black solid 1px">
+        <g transform="translate(125,40)" style="fill: rebeccapurple; stroke-width: 10px; stroke: white" >
+        </g>
+        <line id="xaxis" x1="100" x2="500" y1="545" y2="545"
+              style="stroke: black" stroke-width="3px"></line>
+        <line id="yaxis" x1="100" x2="100" y1="25" y2="545" stroke="black" stroke-width="3px"></line>
+
+<!--add in tick marks for every 500-->
+        <line id="tick2" x1="100" x2="75" y1="535" y2="535"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="525">0</text>
+        <line id="tick3" x1="100" x2="75" y1="485" y2="485"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="475">600</text>
+        <line id="tick4" x1="100" x2="75" y1="435" y2="435"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="425">1200</text>
+        <line id="tick5" x1="100" x2="75" y1="385" y2="385"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="375">1800</text>
+        <line id="tick6" x1="100" x2="75" y1="335" y2="335"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="325">2400</text>
+        <line id="tick7" x1="100" x2="75" y1="285" y2="285"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="275">3000</text>
+        <line id="tick8" x1="100" x2="75" y1="235" y2="235"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="225">3600</text>
+        <line id="tick9" x1="100" x2="75" y1="185" y2="185"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="175">4200</text>
+        <line id="tick10" x1="100" x2="75" y1="135" y2="135"stroke="black" stroke-width="3px"></line>
+        <text x="65" y="125">4800</text>
+        <line id="tick11" x1="100" x2="75" y1="85" y2="85" stroke="black" stroke-width="3px"></line>
+        <text x="65" y="75">5400</text>
+        <line id="tick12" x1="100" x2="75" y1="35" y2="35" stroke-width="3px" stroke="black"></line>
+        <text x="65" y="25">6000</text>
+
+        <line x1="150" x2="150" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+        <text x="140" y="570">Null</text>
+        <line x1="200" x2="200" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+        <text x="175" y="570">Dig Only</text>
+        <line x1="250" x2="250" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+        <text x="225" y="570">Phys. & Dig</text>
+        <line x1="300" x2="300" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+        <text x="275" y="570">Phys. Only</text>
+
+    </svg>
+    <script>
+        d3.csv('includes/data/playstation_4_games.csv')
+
+
+        var barwidth = 50;
+        var maxbarheight = 500;
+
+        var games = [749, 5927, 2974, 150];
+
+        function createBarChart() {
+            var maxValue = d3.max(games);
+
+            var selection = d3.select('svg').select('g').selectAll('rect').data(games);
+
+            var rectangles = selection.enter().append('rect');
+
+            rectangles.attr('width', barwidth)
+
+            rectangles.attr('x', function (d, i) {
+                return i * barwidth;
+            })
+
+            rectangles.attr('height', function (d) {
+                var n = d / maxValue;
+                return n * maxbarheight;
+            });
+
+            rectangles.attr('y', function (d) {
+                var n = 1 - (d / maxValue);
+                return n * maxbarheight;
+            });
+        }
+        createBarChart()
+
+    </script>
+
+</div>
+    <div class="border"></div>
+</div>
+<div class="footer"><p>This was completed for Fall 2021 Visualizing Information @ IUPUI</p></div>
+</body>
+</html>

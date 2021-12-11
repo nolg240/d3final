@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Release Years of PS4 Games From 2013-2021</title>
+    <link type="text/css" rel="stylesheet" href="www/css/finalstyles.css">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+</head>
+<body>
+<div>
+    <h1 class="header">Noelle Gray's Final D3 Project for Visualizing Information</h1>
+</div>
+
+<div class="casing">
+    <div class="border"></div>
+    <div class="content">
+        <a href="d3final.html">Back to Visualizations</a>
+        <h4>Release Years of PS4 Games From 2013-2021 </h4>
+        <p>The question that prompted this visualization was if the number of releases of PS4 games decreased due to the release of PS5 in 2020. However, that does not appear to be the case. In fact, we can see a gradual increase of releases year-to-year, even if it’s not as dramatic. It only slags for one year in 2019. We can exclude the null, but I left it in the graph for a reason.
+        </p>
+        <p>
+            One of the other interesting findings from this graph—that I didn’t really expect—was how many null values there were in the data set. There are about 700 of them. This could of course be interpreted as the author or compiler of the data not completing this section completely; however, I think there might be a more compelling solution.
+        </p>
+            <p>
+            On Playstation 4, especially in its collection of games that are available for digital sale and download, there are many games that were released many years before the PS4 ever came out. For example, the original Final Fantasy VII is available for sale on the Playstation Store; this game came out in 1997, and there are many other video games like this. I’d like to assume that this would be the case for many, if not all of the null value games, but this would take a thorough investigation of each game in the list that has a null value for the release year.
+        </p>
+
+        <svg height="600px" width="600px"
+             style="border: black solid 1px">
+            <g transform="translate(125,40)" style="fill: rebeccapurple; stroke-width: 10px; stroke: white" >
+            </g>
+            <line id="xaxis" x1="100" x2="500" y1="545" y2="545"
+                  style="stroke: black" stroke-width="3px"></line>
+            <line id="yaxis" x1="100" x2="100" y1="25" y2="545" stroke="black" stroke-width="3px"></line>
+
+
+
+            <line id="tick1" x1="100" x2="75" y1="545" y2="545" stroke="black" stroke-width="3px">
+            </line>
+            <text x="65" y="540">0</text>
+
+            <line id="tick8" x1="100" x2="75" y1="445" y2="445"stroke="black" stroke-width="3px">
+            </line>
+            <text x="65" y="440">360</text>
+
+            <line id="tick9" x1="100" x2="75" y1="345" y2="345"stroke="black" stroke-width="3px">
+            </line>
+            <text x="65" y="340">720</text>
+
+            <line id="tick10" x1="100" x2="75" y1="245" y2="245"stroke="black" stroke-width="3px">
+            </line>
+            <text x="65" y="240">1080</text>
+
+            <line id="tick11" x1="100" x2="75" y1="145" y2="145" stroke="black" stroke-width="3px">
+            </line>
+            <text x="65" y="140">1440</text>
+
+            <line id="tick12" x1="100" x2="75" y1="45" y2="45" stroke-width="3px" stroke="black">
+            </line>
+            <text x="65" y="40">1800</text>
+
+
+            <line x1="140" x2="140" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="135" y="570">Null</text>
+            <line x1="170" x2="170" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="165" y="570">2013</text>
+
+            <line x1="200" x2="200" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="190" y="570">2014</text>
+            <line x1="230" x2="230" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="220" y="570">2015</text>
+            <line x1="260" x2="260" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="250" y="570">2016</text>
+
+            <line x1="290" x2="290" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="280" y="570">2017</text>
+
+            <line x1="320" x2="320" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="310" y="570">2018</text>
+
+            <line x1="350" x2="350" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="340" y="570">2019</text>
+
+            <line x1="380" x2="380" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="370" y="570">2020</text>
+
+            <line x1="410" x2="410" y1="545" y2='555' stroke="black" stroke-width="5px"></line>
+            <text x="400" y="570">2021</text>
+
+
+
+
+
+
+            <!--add in tick marks for every 250-->
+        </svg>
+        <!--Script-->
+        <script>
+            d3.csv('includes/data/playstation_4_games.csv')
+
+            var barwidth = 30;
+            var maxbarheight = 500;
+
+            var gamesreleased = [ 734, 56, 246, 477, 842,1130, 1314, 1404,1683,1793];
+
+            function createBarChart() {
+
+                var maxValue = d3.max(gamesreleased);
+
+                var selection = d3.select('svg').select('g').selectAll('rect').data(gamesreleased);
+
+                var rectangles = selection.enter().append('rect');
+
+                rectangles.attr('width', barwidth)
+
+                rectangles.attr('x', function (d, i) {
+                    return i * barwidth;
+                })
+
+                rectangles.attr('height', function (d) {
+                    var n = d / maxValue;
+                    return n * maxbarheight;
+                });
+
+                rectangles.attr('y', function (d) {
+                    var n = 1 - (d / maxValue);
+                    return n * maxbarheight;
+                });
+
+
+            }
+
+            createBarChart()
+        </script>
+
+    </div>
+    <div class="border"></div>
+</div>
+</body>
+</html>
